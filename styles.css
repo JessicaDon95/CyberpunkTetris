@@ -179,3 +179,126 @@ body {
   background: rgba(0, 255, 255, 0.3);
   color: #00FFFF;
 }
+
+/* ─── Music player ─────────────────────────────────────────────── */
+
+#music-player {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: rgba(10, 10, 18, 0.9);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 4px;
+  box-shadow:
+    0 0 8px rgba(0, 255, 255, 0.15),
+    inset 0 0 6px rgba(0, 255, 255, 0.05);
+  z-index: 50;
+  min-width: 160px;
+  backdrop-filter: blur(4px);
+}
+
+.music-title {
+  font-size: 7px;
+  color: #6a6a8a;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.visualizer-bar {
+  display: block;
+  width: 4px;
+  height: 3px;
+  background: #00FFFF;
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(0, 255, 255, 0.6);
+  transition: height 0.15s ease;
+}
+
+.music-track {
+  font-size: 7px;
+  color: #00FFFF;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.4);
+  letter-spacing: 1px;
+  min-width: 100px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #00FFFF;
+  font-size: 12px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
+  padding: 0;
+  line-height: 1;
+}
+
+.music-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.music-btn:active {
+  background: rgba(0, 255, 255, 0.2);
+}
+
+.music-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 3px;
+  background: rgba(0, 255, 255, 0.2);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.music-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #00FFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.music-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #00FFFF;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 255, 255, 0.6);
+  cursor: pointer;
+}

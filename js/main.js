@@ -28,6 +28,39 @@ window.addEventListener('DOMContentLoaded', () => {
   // Resume audio on first user gesture
   document.addEventListener('keydown', () => audio.resume(), { once: true });
 
+  // ─── Music player ─────────────────────────────────────────────
+  const playBtn = document.getElementById('music-play-btn');
+  const skipBtn = document.getElementById('music-skip-btn');
+  const volumeSlider = document.getElementById('music-volume');
+
+  playBtn.addEventListener('click', () => {
+    music.init();
+    if (music.playing) {
+      music.stop();
+    } else {
+      music.play(0);
+    }
+  });
+
+  skipBtn.addEventListener('click', () => {
+    music.init();
+    music.skip();
+  });
+
+  volumeSlider.addEventListener('input', () => {
+    music.setVolume(parseFloat(volumeSlider.value));
+  });
+
+  // Start music when game starts (user gesture already happened)
+  const origStart = game.start.bind(game);
+  game.start = () => {
+    origStart();
+    music.init();
+    if (!music.playing) {
+      music.play(0);
+    }
+  };
+
   // Expose for debugging
   window.game = game;
 });
