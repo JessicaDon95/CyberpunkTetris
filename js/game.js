@@ -140,10 +140,11 @@ class Game {
       setTimeout(() => {
         this.board.clearLines(fullLines);
         this.scoring.awardLines(cleared);
+        this.spawnPiece();
       }, 150);
+    } else {
+      this.spawnPiece();
     }
-
-    this.spawnPiece();
   }
 
   _gameOver() {
