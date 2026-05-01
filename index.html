@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RussianSquare</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-wrapper">
+    <div class="game-container">
+      <!-- Left panel: Hold + Score/Level/Lines -->
+      <div class="side-panel left-panel">
+        <div class="panel-label">HOLD</div>
+        <canvas id="hold-canvas" width="72" height="72"></canvas>
+
+        <div class="panel-label">SCORE</div>
+        <div id="score" class="neon-text">0</div>
+
+        <div class="panel-label">LEVEL</div>
+        <div id="level" class="neon-text">1</div>
+
+        <div class="panel-label">LINES</div>
+        <div id="lines" class="neon-text">0</div>
+      </div>
+
+      <!-- Main game canvas -->
+      <canvas id="game-canvas"></canvas>
+
+      <!-- Right panel: Next pieces -->
+      <div class="side-panel right-panel">
+        <div class="panel-label">NEXT</div>
+        <canvas id="next-canvas-1" width="72" height="72"></canvas>
+        <canvas id="next-canvas-2" width="72" height="72"></canvas>
+      </div>
+    </div>
+
+    <!-- Mute indicator -->
+    <div id="mute-indicator" class="neon-text" style="display: none;"></div>
+  </div>
+
+  <!-- Overlay for menu / pause / game over -->
+  <div id="overlay" class="overlay">
+    <div class="overlay-content">
+      <h1 id="overlay-title" class="overlay-title neon-text">RUSSIANSQUARE</h1>
+      <p id="overlay-message" class="overlay-message neon-text">PRESS ENTER TO START</p>
+    </div>
+  </div>
+
+  <script src="js/constants.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/board.js"></script>
+  <script src="js/piece.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

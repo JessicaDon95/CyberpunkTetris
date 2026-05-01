@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  background: #0a0a12;
+  color: #e0e0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  overflow: hidden;
+}
+
+/* ─── Layout ───────────────────────────────────────────────────── */
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+}
+
+/* ─── Main game canvas ─────────────────────────────────────────── */
+
+#game-canvas {
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  box-shadow:
+    0 0 5px rgba(0, 255, 255, 0.3),
+    0 0 15px rgba(0, 255, 255, 0.15),
+    inset 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+/* ─── Side panels ──────────────────────────────────────────────── */
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+  padding: 12px 8px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 4px;
+  background: #0d0d1a;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+}
+
+.side-panel canvas {
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: 2px;
+  background: #0a0a12;
+}
+
+.panel-label {
+  font-size: 8px;
+  color: #6a6a8a;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ─── Neon text ────────────────────────────────────────────────── */
+
+.neon-text {
+  color: #00FFFF;
+  text-shadow:
+    0 0 4px rgba(0, 255, 255, 0.6),
+    0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+#score, #level, #lines {
+  font-size: 14px;
+  text-align: center;
+}
+
+#score {
+  font-size: 12px;
+}
+
+/* ─── Overlay ──────────────────────────────────────────────────── */
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 18, 0.85);
+  z-index: 100;
+  pointer-events: none;
+  backdrop-filter: blur(2px);
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  text-align: center;
+}
+
+.overlay-title {
+  font-size: 32px;
+  margin-bottom: 24px;
+  letter-spacing: 4px;
+}
+
+.overlay-message {
+  font-size: 10px;
+  color: #e0e0ff;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Mute indicator ───────────────────────────────────────────── */
+
+#mute-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 10px;
+  color: #FF0000;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+/* ─── Scanline overlay ─────────────────────────────────────────── */
+
+.game-container::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ─── CRT vignette ─────────────────────────────────────────────── */
+
+.game-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* ─── Selection ────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: #00FFFF;
+}
